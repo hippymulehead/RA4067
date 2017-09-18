@@ -30,7 +30,7 @@ RA4067::RA4067(int s0, int s1, int s2, int s3, int enable) {
 }
 
 void RA4067::setPin(int pinToSet) {
-    if ((pinToSet >= 0) && (pinToSet < 8)) {
+    if ((pinToSet >= 0) && (pinToSet < 16)) {
         _currentPin = pinToSet;
         int _r0 = bitRead(_currentPin, 0);
         int _r1 = bitRead(_currentPin, 1);
