@@ -12,21 +12,45 @@ RA4067::RA4067(int s0, int s1, int s2, int s3) {
     pinMode(_s3, OUTPUT);
     _currentPin = 0;
     _eb = 0;
+    _re = 0;
 }
 
-RA4067::RA4067(int s0, int s1, int s2, int s3, int enable) {
+RA4067::RA4067(int s0, int s1, int s2, int s3, int readPin) {
     _s0 = s0;
     _s1 = s1;
     _s2 = s2;
     _s3 = s3;
-    _e = enable;
+    _readPin = readPin;
     pinMode(_s0, OUTPUT);
     pinMode(_s1, OUTPUT);
     pinMode(_s2, OUTPUT);
     pinMode(_s3, OUTPUT);
-    pinMode(_e, OUTPUT);
+    pinMode(_readPin, INPUT);
     _currentPin = 0;
+    _eb = 0;
+    _re = 1;
+}
+
+void RA4067::setEnablePin(int enable) {
+    _e = enable;
+    pinMode(_e, OUTPUT);
     _eb = 1;
+}
+
+int RA4067::RADigitalRead() {
+    if (_re == 1) {
+        return digitalRead(_readPin);
+    } else {
+        return 0;
+    }
+}
+
+int RA4067::RAAnalogRead() {
+    if (_re == 1) {
+        return analogRead(_readPin);
+    } else {
+        return 0;
+    }
 }
 
 void RA4067::setPin(int pinToSet) {
