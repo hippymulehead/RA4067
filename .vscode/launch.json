@@ -7,7 +7,7 @@
             "cwd": "${workspaceRoot}",
             "name": "PlatformIO Debugger",
             "target": "/home/mromans/Documents/PlatformIO/Projects/RA4067/.pioenvs/nanoatmega328/firmware.elf",
-            "gdbpath": "/usr/local/bin/piodebuggdb",
+            "gdbpath": "/home/mromans/.platformio/penv/bin/piodebuggdb",
             "autorun": [ "source .pioinit" ]
         }
     ]
