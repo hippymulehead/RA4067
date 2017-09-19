@@ -22,7 +22,9 @@ class RA4067 {
         void on();
         // Disable the 4051
         void off();
+        // Demux digital read
         int RADigitalRead();
+        // Demux analog read
         int RAAnalogRead();
     protected:
         int             _s0;
