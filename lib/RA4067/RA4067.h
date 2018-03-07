@@ -27,16 +27,16 @@ class RA4067 {
         // Demux analog read
         int RAAnalogRead();
     protected:
-        int             _s0;
-        int             _s1;
-        int             _s2;
-        int             _s3;
-        int             _e;
-        int             _enableBit;
-        int             _eb;
-        int             _re;
-        int             _currentPin;
-        int             _readPin;
+        int             m_s0;
+        int             m_s1;
+        int             m_s2;
+        int             m_s3;
+        int             m_e;
+        int             m_enableBit;
+        int             m_eb;
+        int             m_re;
+        int             m_currentPin;
+        int             m_readPin;
     private:
 };
 #endif

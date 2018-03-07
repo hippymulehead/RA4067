@@ -2,52 +2,52 @@
 #include <RA4067.h>
 
 RA4067::RA4067(int s0, int s1, int s2, int s3) {
-    _s0 = s0;
-    _s1 = s1;
-    _s2 = s2;
-    _s3 = s3;
-    pinMode(_s0, OUTPUT);
-    pinMode(_s1, OUTPUT);
-    pinMode(_s2, OUTPUT);
-    pinMode(_s3, OUTPUT);
-    _currentPin = 0;
-    _eb = 0;
-    _re = 0;
+    m_s0 = s0;
+    m_s1 = s1;
+    m_s2 = s2;
+    m_s3 = s3;
+    pinMode(m_s0, OUTPUT);
+    pinMode(m_s1, OUTPUT);
+    pinMode(m_s2, OUTPUT);
+    pinMode(m_s3, OUTPUT);
+    m_currentPin = 0;
+    m_eb = 0;
+    m_re = 0;
 }
 
 RA4067::RA4067(int s0, int s1, int s2, int s3, int readPin) {
-    _s0 = s0;
-    _s1 = s1;
-    _s2 = s2;
-    _s3 = s3;
-    _readPin = readPin;
-    pinMode(_s0, OUTPUT);
-    pinMode(_s1, OUTPUT);
-    pinMode(_s2, OUTPUT);
-    pinMode(_s3, OUTPUT);
-    pinMode(_readPin, INPUT);
-    _currentPin = 0;
-    _eb = 0;
-    _re = 1;
+    m_s0 = s0;
+    m_s1 = s1;
+    m_s2 = s2;
+    m_s3 = s3;
+    m_readPin = readPin;
+    pinMode(m_s0, OUTPUT);
+    pinMode(m_s1, OUTPUT);
+    pinMode(m_s2, OUTPUT);
+    pinMode(m_s3, OUTPUT);
+    pinMode(m_readPin, INPUT);
+    m_currentPin = 0;
+    m_eb = 0;
+    m_re = 1;
 }
 
 void RA4067::setEnablePin(int enable) {
-    _e = enable;
-    pinMode(_e, OUTPUT);
-    _eb = 1;
+    m_e = enable;
+    pinMode(m_e, OUTPUT);
+    m_eb = 1;
 }
 
 int RA4067::RADigitalRead() {
-    if (_re == 1) {
-        return digitalRead(_readPin);
+    if (m_re == 1) {
+        return digitalRead(m_readPin);
     } else {
         return 0;
     }
 }
 
 int RA4067::RAAnalogRead() {
-    if (_re == 1) {
-        return analogRead(_readPin);
+    if (m_re == 1) {
+        return analogRead(m_readPin);
     } else {
         return 0;
     }
@@ -55,32 +55,32 @@ int RA4067::RAAnalogRead() {
 
 void RA4067::setPin(int pinToSet) {
     if ((pinToSet >= 0) && (pinToSet < 16)) {
-        _currentPin = pinToSet;
-        int _r0 = bitRead(_currentPin, 0);
-        int _r1 = bitRead(_currentPin, 1);
-        int _r2 = bitRead(_currentPin, 2);
-        int _r3 = bitRead(_currentPin, 3);
-        digitalWrite(_s0, _r0);
-        digitalWrite(_s1, _r1);
-        digitalWrite(_s2, _r2);
-        digitalWrite(_s3, _r3);
+        m_currentPin = pinToSet;
+        int m_r0 = bitRead(m_currentPin, 0);
+        int m_r1 = bitRead(m_currentPin, 1);
+        int m_r2 = bitRead(m_currentPin, 2);
+        int m_r3 = bitRead(m_currentPin, 3);
+        digitalWrite(m_s0, m_r0);
+        digitalWrite(m_s1, m_r1);
+        digitalWrite(m_s2, m_r2);
+        digitalWrite(m_s3, m_r3);
     }
 }
 
 int RA4067::getCurrentPin() {
-    return _currentPin;
+    return m_currentPin;
 }
 
 void RA4067::on() {
-    if ((_eb == 1) && (_enableBit != LOW)) {
-        digitalWrite(_e, LOW);
-        _enableBit = LOW;
+    if ((m_eb == 1) && (m_enableBit != LOW)) {
+        digitalWrite(m_e, LOW);
+        m_enableBit = LOW;
     }
 }
 
 void RA4067::off() {
-    if ((_eb == 1) && (_enableBit != HIGH)) {
-        digitalWrite(_e, HIGH);
-        _enableBit = HIGH;
+    if ((m_eb == 1) && (m_enableBit != HIGH)) {
+        digitalWrite(m_e, HIGH);
+        m_enableBit = HIGH;
     }
 }

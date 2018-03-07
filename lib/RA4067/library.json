@@ -1,0 +1,18 @@
+{
+"name": "RA4067",
+"frameworks": "Arduino",
+"keywords": "4067,mux,demux",
+"description": "Arduino lib for the 4067 mux/demux chips",
+"url": "https://github.com/hippymulehead/RA4067",
+"authors":
+[
+{
+        "name": "Michael Romans"
+}
+],
+"repository":
+{
+    "type": "git",
+    "url": "https://github.com/hippymulehead/RA4067.git"
+}
+}

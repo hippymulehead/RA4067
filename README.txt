@@ -1,6 +1,6 @@
 RA4067
 
-PlatformIO code to controll a 4067 mux/demux chip in an OOP kinda way.
+PlatformIO code to control a 4067 mux/demux chip in an OOP kinda way.
 Simple object for controlling a 4051 multiplexer.  This just does the writes
 and keeps track of the pin that's set on the 4051.
 
